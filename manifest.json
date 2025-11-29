@@ -1,0 +1,25 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "SkillsAPI",
+    "description": "Adicao de skills ao jogo",
+    "uuid": "fccc3179-1fb1-49ea-9738-e6f62d5f9dad",
+    "version": [1, 0, 0],
+    "min_engine_version": [1, 21, 80]
+  },
+  "modules": [
+    {
+      "uuid": "5fc20a66-eab9-4151-9387-48c853bb642b",
+      "version": [1, 0, 0],
+      "type": "script",
+      "language": "javascript",
+      "entry": "scripts/main.js"       
+    }
+  ],
+  "dependencies": [
+    {
+      "module_name": "@minecraft/server",
+      "version": "2.3.0"
+    }
+  ]
+}
