@@ -1,4 +1,5 @@
-import { world, system, DisplaySlotId } from "@minecraft/server";
+import { world, system } from "@minecraft/server";
+import ProgressBar from "./progressbars/progressbar.js";
 
 // ====================================
 // LER README.MD PARA INFORMACOES UTEIS
@@ -97,12 +98,14 @@ class SkillsSystem {
   // retornos
   // ========
   actionBar(player, skillName, xpGained) {
-    const xpPlayer = this.getXp(player, skillName);
-    const lvlPlayer = this.getLvl(player, skillName);
-    const xpNeeded = this.getXpNeeded(lvlPlayer);
-    player.onScreenDisplay.setActionBar(
-      `§gMiner:: §dXp: (${xpPlayer}/${xpNeeded}) §3Lvl: (${lvlPlayer}/${this.skills[skillName].maxLevel})`
-    );
+    // const xpPlayer = this.getXp(player, skillName);
+    // const lvlPlayer = this.getLvl(player, skillName);
+    // const xpNeeded = this.getXpNeeded(lvlPlayer);
+    // player.onScreenDisplay.setActionBar(
+    //   `§gMiner:: §dXp: (${xpPlayer}/${xpNeeded}) §3Lvl: (${lvlPlayer}/${this.skills[skillName].maxLevel})`
+    // );
+
+    ProgressBar.progressBar(player, skillName, skillSystem);
   }
 }
 
@@ -130,6 +133,8 @@ const miningBlocksXP = {
   "minecraft:ancient_debris": 100,
 };
 const skillSystem = new SkillsSystem();
+
+
 
 world.afterEvents.worldLoad.subscribe(() => {
   // Evento de quebrar blocos!
