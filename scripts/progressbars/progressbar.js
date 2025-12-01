@@ -1,10 +1,11 @@
-import { world, system } from "@minecraft/server";
 class ProgressBar {
-  progressBar(player, skillName, skillSystem) {
+  // Barra com 3 cores
+  progressBarOne(player, skillName, skillSystem) {
     const skill = skillSystem.skills[skillName]
     const xpPlayer = skillSystem.getXp(player, skillName);
     const lvlPlayer = skillSystem.getLvl(player, skillName);
-
+    if (lvlPlayer >= skill.maxLevel) return; // Se o jogador estiver no nível máximo, não exibe a barra.
+    
     const xpNeeded = skillSystem.getXpNeeded(lvlPlayer)
     const percentage = Math.floor((xpPlayer / xpNeeded) * 100);
 
